@@ -2,11 +2,91 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Group 44 Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group 44 - CI/CD Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Group 44 - DevOps & Full-Stack Success!</h1>
-    <p>This website is deployed using GitHub Actions and Pages.</p>
-    <p>Collaborators: Liyanaarachchi04 & nisha20001216</p>
+<body class="bg-slate-900 text-white font-sans">
+
+    <nav class="border-b border-slate-800 p-4 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-blue-600 p-2 rounded-lg">
+                    <i class="fas fa-rocket text-xl"></i>
+                </div>
+                <h1 class="text-xl font-bold tracking-tight">Group 44 DevOps</h1>
+            </div>
+            <div class="flex gap-4">
+                <span class="flex items-center gap-2 text-sm bg-green-500/10 text-green-400 px-3 py-1 rounded-full border border-green-500/20">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    Pipeline Active
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto p-6 space-y-8">
+        <section class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl p-8 shadow-2xl overflow-hidden relative">
+            <div class="relative z-10">
+                <h2 class="text-4xl font-extrabold mb-2">Automated CI/CD Pipeline</h2>
+                <p class="text-blue-100 text-lg max-w-2xl">This project demonstrates a professional DevOps workflow using GitHub Actions and GitHub Pages. Every commit is validated and deployed automatically.</p>
+            </div>
+            <i class="fas fa-gears absolute right-[-20px] bottom-[-20px] text-[200px] text-white/10 rotate-12"></i>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition-all group">
+                <i class="fas fa-code-branch text-blue-500 text-2xl mb-4 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-slate-400 text-sm font-medium uppercase tracking-wider">Source Branch</h3>
+                <p class="text-2xl font-bold mt-1">main</p>
+            </div>
+            <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-green-500 transition-all group">
+                <i class="fas fa-check-circle text-green-500 text-2xl mb-4 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-slate-400 text-sm font-medium uppercase tracking-wider">Build Status</h3>
+                <p class="text-2xl font-bold mt-1 text-green-400">Success</p>
+            </div>
+            <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-purple-500 transition-all group">
+                <i class="fas fa-globe text-purple-500 text-2xl mb-4 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-slate-400 text-sm font-medium uppercase tracking-wider">Deployment</h3>
+                <p class="text-2xl font-bold mt-1">GitHub Pages</p>
+            </div>
+        </div>
+
+        <section class="bg-slate-800/30 rounded-2xl border border-slate-700 p-6">
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <i class="fas fa-users text-blue-500"></i>
+                Team Contributors
+            </h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="text-slate-400 border-b border-slate-700">
+                            <th class="pb-4 font-semibold">Username</th>
+                            <th class="pb-4 font-semibold">Role</th>
+                            <th class="pb-4 font-semibold">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700">
+                        <tr>
+                            <td class="py-4 font-medium">Liyanaarachchi04</td>
+                            <td class="py-4 text-slate-400">DevOps Engineer</td>
+                            <td class="py-4"><span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-md text-xs border border-blue-500/20">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 font-medium">nisha20001216</td>
+                            <td class="py-4 text-slate-400">Frontend Developer</td>
+                            <td class="py-4"><span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-md text-xs border border-blue-500/20">Active</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="max-w-7xl mx-auto p-12 text-center text-slate-500 border-t border-slate-800 mt-12">
+        <p>&copy; 2024 Group 44 Assignment. Built with GitHub Actions.</p>
+    </footer>
+
 </body>
 </html>
