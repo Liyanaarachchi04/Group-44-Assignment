@@ -1,9 +1,32 @@
-name: CI-Pipeline
-on: [push, pull_request]
+name: Professional CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
-  test:
+  validate-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Run Check
-        run: echo "Hello Group 44! Your CI Pipeline is working."
+      - uses: actions/checkout@v4
+
+      - name: Code Quality Check
+        run: |
+          echo "Validating Group 44 Project Code..."
+          grep -q "<!DOCTYPE html>" index.html || exit 1
+          echo "Validation Passed!"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
