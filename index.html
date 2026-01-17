@@ -8,49 +8,49 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
-        body { font-family: 'Outfit', sans-serif; background: #0f172a; transition: all 1s ease; background-size: cover; background-position: center; }
-        .glass { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .search-bar { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); transition: 0.3s; }
-        .search-bar:focus { border-color: #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
-        .weather-animate { animation: float 4s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        body { font-family: 'Outfit', sans-serif; background: #0f172a; transition: all 1s ease; background-size: cover; background-position: center; background-attachment: fixed; }
+        .glass-ui { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .search-field { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); transition: 0.3s; }
+        .search-field:focus { border-color: #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+        .icon-float { animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
     </style>
 </head>
-<body class="min-h-screen text-white flex flex-col items-center justify-center p-6 bg-fixed">
+<body class="min-h-screen text-white flex flex-col items-center justify-center p-6">
     
-    <div class="w-full max-w-5xl flex justify-between items-center mb-10 px-4">
+    <div class="w-full max-w-5xl flex justify-between items-center mb-12">
         <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-blue-500/50">
-                <i class="fas fa-bolt text-white text-xl"></i>
+            <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/40">
+                <i class="fas fa-satellite-dish text-white"></i>
             </div>
             <div>
-                <h2 class="text-2xl font-extrabold tracking-tight">SKY<span class="text-blue-500 text-glow">LAB</span> 44</h2>
+                <h1 class="text-2xl font-black tracking-tight">SKY<span class="text-blue-500 text-glow">LAB</span> 44</h1>
                 <p class="text-[10px] text-slate-400 font-bold uppercase tracking-[0.4em]">Next-Gen CI/CD Pipeline</p>
             </div>
         </div>
-        <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+        <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10 font-mono">
             <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span class="text-[10px] font-mono font-bold text-green-400">STATUS: ONLINE</span>
+            <span class="text-[10px] font-bold text-green-400 uppercase">Status: Live</span>
         </div>
     </div>
 
-    <div class="w-full max-w-lg relative mb-16">
-        <input id="city-input" type="text" placeholder="Search for a city (e.g. Colombo, London)..." 
-               class="search-bar w-full px-8 py-5 rounded-[2rem] outline-none text-lg">
-        <button onclick="getWeather()" class="absolute right-3 top-2 bottom-2 bg-blue-600 hover:bg-blue-500 px-6 rounded-2xl transition-all shadow-lg">
+    <div class="w-full max-w-lg relative mb-16 group">
+        <input id="city-input" type="text" placeholder="Explore world weather (e.g. Colombo)..." 
+               class="search-field w-full px-8 py-5 rounded-[2rem] outline-none text-lg">
+        <button onclick="getWeather()" class="absolute right-3 top-2 bottom-2 bg-blue-600 hover:bg-blue-500 px-6 rounded-2xl transition-all">
             <i class="fas fa-search"></i>
         </button>
     </div>
 
-    <div id="weather-display" class="hidden w-full max-w-5xl grid grid-cols-1 lg:grid-cols-3 gap-8 animate-in zoom-in duration-700">
-        <div class="lg:col-span-2 glass rounded-[3.5rem] p-12 flex flex-col justify-between shadow-2xl relative overflow-hidden">
-            <div class="flex justify-between">
+    <div id="weather-display" class="hidden w-full max-w-5xl grid grid-cols-1 lg:grid-cols-3 gap-8 animate-in zoom-in duration-500">
+        <div class="lg:col-span-2 glass-ui rounded-[3.5rem] p-12 flex flex-col justify-between shadow-2xl overflow-hidden relative">
+            <div class="flex justify-between items-start">
                 <div>
-                    <h1 id="city-name" class="text-6xl font-black mb-2 tracking-tighter uppercase">Colombo</h1>
-                    <p id="weather-desc" class="text-2xl text-blue-400 font-semibold capitalize tracking-wide">Clear Sky</p>
+                    <h2 id="city-name" class="text-6xl font-black mb-2 tracking-tighter uppercase">Colombo</h2>
+                    <p id="weather-desc" class="text-2xl text-blue-400 capitalize font-medium">Scattered Clouds</p>
                 </div>
-                <div id="weather-icon" class="text-8xl weather-animate text-yellow-400">
-                    <i class="fas fa-sun"></i>
+                <div id="weather-icon" class="icon-float text-8xl text-yellow-400">
+                    <i class="fas fa-cloud-sun"></i>
                 </div>
             </div>
             <div class="mt-16">
@@ -60,44 +60,44 @@
         </div>
 
         <div class="flex flex-col gap-6">
-            <div class="glass rounded-[2.5rem] p-8 flex-1 group hover:border-blue-500/50 transition-all">
-                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Humidity</p>
+            <div class="glass-ui rounded-[2.5rem] p-8 flex-1">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Humidity</p>
                 <div class="flex items-center justify-between">
                     <span id="humidity" class="text-4xl font-bold">75%</span>
-                    <i class="fas fa-droplet text-blue-500 text-3xl"></i>
+                    <i class="fas fa-droplet text-blue-500 text-2xl"></i>
                 </div>
             </div>
-            <div class="glass rounded-[2.5rem] p-8 flex-1 group hover:border-blue-500/50 transition-all">
-                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Wind Speed</p>
+            <div class="glass-ui rounded-[2.5rem] p-8 flex-1">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Wind Speed</p>
                 <div class="flex items-center justify-between">
                     <span id="wind" class="text-4xl font-bold">12 km/h</span>
-                    <i class="fas fa-wind text-blue-400 text-3xl"></i>
+                    <i class="fas fa-wind text-blue-400 text-2xl"></i>
                 </div>
             </div>
-            <div class="glass rounded-[2.5rem] p-8 flex-1 group hover:border-blue-500/50 transition-all">
-                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Feels Like</p>
+            <div class="glass-ui rounded-[2.5rem] p-8 flex-1">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Feels Like</p>
                 <div class="flex items-center justify-between">
                     <span id="feels-like" class="text-4xl font-bold">30°C</span>
-                    <i class="fas fa-temperature-half text-orange-500 text-3xl"></i>
+                    <i class="fas fa-temperature-half text-orange-500 text-2xl"></i>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="error-msg" class="hidden mt-4 bg-red-500/20 border border-red-500/50 text-red-400 px-6 py-3 rounded-full font-bold animate-bounce">
+    <div id="error-msg" class="hidden mt-6 bg-red-500/20 border border-red-500/50 text-red-400 px-8 py-4 rounded-full font-bold">
         <i class="fas fa-circle-exclamation mr-2"></i> City not found. Please try again!
     </div>
 
     <footer class="mt-24 text-center">
-        <p class="text-slate-600 text-[10px] font-bold tracking-[0.6em] uppercase">
-            Designed by Group 44 &bull; Interactive Weather Systems &bull; &copy; 2026
+        <p class="text-slate-500 text-[10px] font-bold tracking-[0.6em] uppercase">
+            Designed by Group 44 &bull; Version 4.0 &bull; &copy; 2026
         </p>
     </footer>
 
     <script>
         async function getWeather() {
             const city = document.getElementById('city-input').value;
-            // Updated valid API Key
+            // Updated Public Key
             const apiKey = '8ac5c4d57ba6a4b3d9753e04e9c704f2'; 
             const url = https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric;
 
@@ -116,7 +116,7 @@
                     document.getElementById('wind').innerText = data.wind.speed + ' km/h';
                     document.getElementById('feels-like').innerText = Math.round(data.main.feels_like) + '°C';
 
-                    updateBackground(data.weather[0].main);
+                    updateScene(data.weather[0].main);
                 } else {
                     throw new Error();
                 }
@@ -126,28 +126,28 @@
             }
         }
 
-        function updateBackground(condition) {
+        function updateScene(condition) {
             const body = document.body;
-            const iconDiv = document.getElementById('weather-icon');
+            const iconBox = document.getElementById('weather-icon');
             let bgUrl = '';
             let icon = '';
 
             if (condition === 'Clouds') {
-                bgUrl = 'https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=1920&q=80';
-                icon = '<i class="fas fa-cloud text-slate-300"></i>';
+                bgUrl = 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=1920&q=80';
+                icon = '<i class="fas fa-cloud-sun text-slate-300"></i>';
             } else if (condition === 'Rain' || condition === 'Drizzle') {
                 bgUrl = 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&w=1920&q=80';
                 icon = '<i class="fas fa-cloud-showers-heavy text-blue-400"></i>';
             } else if (condition === 'Clear') {
-                bgUrl = 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=1920&q=80';
-                icon = '<i class="fas fa-sun text-yellow-400"></i>';
+                bgUrl = 'https://images.unsplash.com/photo-1622396481328-9b1b78cdd9fd?auto=format&fit=crop&w=1920&q=80';
+                icon = '<i class="fas fa-sun text-yellow-400 text-glow"></i>';
             } else {
                 bgUrl = 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1920&q=80';
                 icon = '<i class="fas fa-cloud-sun text-orange-400"></i>';
             }
 
             body.style.backgroundImage = url('${bgUrl}');
-            iconDiv.innerHTML = icon;
+            iconBox.innerHTML = icon;
         }
     </script>
 </body>
