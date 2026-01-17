@@ -1,0 +1,9 @@
+name: CI-Pipeline
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Check
+        run: echo "Hello Group 44! Your CI Pipeline is working."
