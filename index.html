@@ -3,90 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group 44 | Premium Tech Blog</title>
+    <title>Group 44 | Live Weather Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .glass-effect { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .text-glow { text-shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0f172a; color: #f8fafc; }
+        .weather-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .grad-text { background: linear-gradient(to right, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body class="bg-[#0f172a] text-slate-200 antialiased">
+<body class="min-h-screen flex flex-col">
 
-    <nav class="border-b border-slate-800 bg-[#0f172a]/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav class="border-b border-slate-800 p-6 bg-slate-900/50">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="bg-gradient-to-br from-blue-500 to-purple-600 p-2 rounded-xl shadow-lg shadow-blue-500/20">
-                    <i class="fas fa-bolt text-white text-lg"></i>
-                </div>
-                <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">Group 44 Blog</span>
+                <i class="fas fa-cloud-sun text-blue-400 text-2xl"></i>
+                <span class="text-xl font-bold tracking-tight">Weather<span class="text-blue-500">Hub</span> 44</span>
             </div>
-            <div class="flex items-center gap-3 bg-slate-800/50 px-4 py-1.5 rounded-full border border-slate-700 font-mono">
-                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span class="text-[10px] font-bold text-green-400 uppercase tracking-widest">CI/CD Active</span>
+            <div class="text-[10px] font-bold bg-green-500/10 text-green-500 px-3 py-1 rounded-full border border-green-500/20 tracking-widest uppercase">
+                Pipeline Active
             </div>
         </div>
     </nav>
 
-    <header class="max-w-6xl mx-auto px-6 py-24 text-center">
-        <div class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-blue-400 uppercase bg-blue-500/10 border border-blue-500/20 rounded-full">
-            DevOps & Automation
+    <main class="flex-grow max-w-4xl mx-auto w-full px-6 py-12 text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Check Your <span class="grad-text">Local Weather</span></h1>
+        <p class="text-slate-400 mb-10">Real-time data fetching via OpenWeatherMap API for Group 44 Assignment.</p>
+
+        <div class="flex gap-2 max-w-md mx-auto mb-12">
+            <input id="city-input" type="text" placeholder="Enter City Name (e.g. Colombo)" 
+                   class="flex-grow bg-slate-800/50 border border-slate-700 rounded-2xl px-6 py-4 outline-none focus:border-blue-500 transition-all">
+            <button onclick="getWeather()" class="bg-blue-600 hover:bg-blue-700 px-6 py-4 rounded-2xl transition-all">
+                <i class="fas fa-search"></i>
+            </button>
         </div>
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight leading-tight">
-            Engineering the <span class="text-blue-500 text-glow italic">Future.</span>
-        </h1>
-        <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            A specialized blog platform by Group 44. Documenting our journey through modern CI/CD pipelines and software delivery automation.
-        </p>
-    </header>
 
-    <main class="max-w-6xl mx-auto px-6 pb-24">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            <article class="glass-effect rounded-[2.5rem] p-10 hover:border-blue-500/40 transition-all duration-500 group">
-                <div class="flex items-center gap-5 mb-8">
-                    <div class="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center text-white text-xl font-bold shadow-xl shadow-blue-600/20">L</div>
-                    <div>
-                        <h4 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">Liyanaarachchi04</h4>
-                        <p class="text-sm text-slate-500 font-medium">Infrastructure Lead</p>
+        <div id="weather-display" class="hidden animate-in fade-in duration-700">
+            <div class="weather-card rounded-[2.5rem] p-10 text-center shadow-2xl">
+                <h2 id="city-name" class="text-3xl font-bold mb-2 uppercase tracking-widest">Colombo</h2>
+                <p id="weather-desc" class="text-blue-400 font-medium mb-6">Cloudy Sky</p>
+                <div class="text-7xl font-extrabold mb-8 tracking-tighter"><span id="temp">28</span>°C</div>
+                
+                <div class="grid grid-cols-2 gap-4 text-left border-t border-slate-700 pt-8 mt-4">
+                    <div class="p-4 bg-slate-800/30 rounded-2xl">
+                        <p class="text-xs text-slate-500 font-bold uppercase mb-1">Humidity</p>
+                        <p id="humidity" class="text-xl font-bold">75%</p>
+                    </div>
+                    <div class="p-4 bg-slate-800/30 rounded-2xl">
+                        <p class="text-xs text-slate-500 font-bold uppercase mb-1">Wind Speed</p>
+                        <p id="wind" class="text-xl font-bold">12 km/h</p>
                     </div>
                 </div>
-                <h3 class="text-2xl font-bold mb-4 leading-snug">Scaling CI/CD with GitHub Actions</h3>
-                <p class="text-slate-400 leading-relaxed mb-8">Exploring how we configured automated workflows to build and deploy our university assignments in real-time.</p>
-                <a href="#" class="inline-flex items-center text-blue-500 font-bold text-sm tracking-wide uppercase hover:gap-3 transition-all">
-                    View Project <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                </a>
-            </article>
+            </div>
+        </div>
 
-            <article class="glass-effect rounded-[2.5rem] p-10 hover:border-purple-500/40 transition-all duration-500 group">
-                <div class="flex items-center gap-5 mb-8">
-                    <div class="w-14 h-14 rounded-2xl bg-purple-600 flex items-center justify-center text-white text-xl font-bold shadow-xl shadow-purple-600/20">N</div>
-                    <div>
-                        <h4 class="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">nisha20001216</h4>
-                        <p class="text-sm text-slate-500 font-medium">Lead UI Designer</p>
-                    </div>
-                </div>
-                <h3 class="text-2xl font-bold mb-4 leading-snug">Crafting Modern User Interfaces</h3>
-                <p class="text-slate-400 leading-relaxed mb-8">A look into utility-first CSS and how Tailwind was used to build this premium developer blog experience.</p>
-                <a href="#" class="inline-flex items-center text-purple-500 font-bold text-sm tracking-wide uppercase hover:gap-3 transition-all">
-                    Read Story <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                </a>
-            </article>
-
+        <div id="error-msg" class="hidden text-red-400 font-medium mt-4">
+            City not found. Please try again.
         </div>
     </main>
 
-    <footer class="border-t border-slate-800 py-16 bg-[#0a0f1d]">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col items-center">
-            <div class="flex gap-6 mb-8">
-                <i class="fab fa-github text-slate-500 hover:text-white transition-colors text-xl cursor-pointer"></i>
-                <i class="fab fa-linkedin text-slate-500 hover:text-white transition-colors text-xl cursor-pointer"></i>
-            </div>
-            <p class="text-slate-600 text-xs font-bold uppercase tracking-[0.3em]">&copy; 2024 Group 44 | Automated Deployment</p>
-        </div>
+    <footer class="py-12 border-t border-slate-800 text-center">
+        <p class="text-slate-500 text-xs font-bold tracking-[0.3em] uppercase">CI/CD Automated Deployment &copy; 2024</p>
     </footer>
 
+    <script>
+        async function getWeather() {
+            const city = document.getElementById('city-input').value;
+            const apiKey = '8ac5c4d57ba6a4b3d9753e04e9c704f2'; // Publicly available key for demo
+            const url = https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.cod === 200) {
+                    document.getElementById('weather-display').classList.remove('hidden');
+                    document.getElementById('error-msg').classList.add('hidden');
+                    
+                    document.getElementById('city-name').innerText = data.name;
+                    document.getElementById('temp').innerText = Math.round(data.main.temp);
+                    document.getElementById('weather-desc').innerText = data.weather[0].description;
+                    document.getElementById('humidity').innerText = data.main.humidity + '%';
+                    document.getElementById('wind').innerText = data.wind.speed + ' km/h';
+                } else {
+                    throw new Error();
+                }
+            } catch (err) {
+                document.getElementById('weather-display').classList.add('hidden');
+                document.getElementById('error-msg').classList.remove('hidden');
+            }
+        }
+    </script>
 </body>
 </html>
