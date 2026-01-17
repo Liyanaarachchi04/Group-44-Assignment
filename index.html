@@ -34,52 +34,35 @@
         box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         text-align: center;
         width: 350px;
-    }
-    input {
-        padding: 12px;
-        border-radius: 10px;
-        border: none;
-        width: 70%;
-        outline: none;
-        background: rgba(255, 255, 255, 0.2);
-        color: white;
-    }
-    button {
-        padding: 12px 20px;
-        border-radius: 10px;
-        border: none;
-        background: #00d2ff;
-        color: white;
-        cursor: pointer;
-        font-weight: bold;
-    }
-    .weather-info { margin-top: 30px; }
-    h2 { font-size: 2em; margin-bottom: 5px; }
-    .temp { font-size: 3em; font-weight: bold; }
-</style>
-                
-                 <div class="grid grid-cols-2 gap-4 w-full md:w-auto">
-                    <div class="bg-slate-900/80 p-8 rounded-[2rem] text-center border border-white/5">
-                        <i class="fas fa-droplet text-indigo-500 text-2xl mb-3"></i>
-                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Humidity</p>
-                        <p id="humidity" class="text-3xl font-bold">0%</p>
-                    </div>
-                    <div class="bg-slate-900/80 p-8 rounded-[2rem] text-center border border-white/5">
-                        <i class="fas fa-wind text-indigo-400 text-2xl mb-3"></i>
-                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Wind Speed</p>
-                        <p id="wind" class="text-3xl font-bold">0 km/h</p>
-                    </div>
+        <body class="p-4">
+    <div class="container">
+        <h1 class="text-3xl font-black tracking-tighter uppercase mb-2">SKY<span class="text-indigo-500">NET</span></h1>
+        <p class="text-[10px] text-indigo-400 font-bold tracking-[0.3em] uppercase mb-8">Global Monitoring System</p>
+
+        <div class="search-box flex gap-2 mb-8">
+            <input type="text" id="city-input" placeholder="Enter city name..." class="flex-1 p-3 rounded-xl bg-slate-800 border border-slate-700 text-white outline-none focus:border-indigo-500">
+            <button onclick="getWeather()" class="bg-indigo-600 p-3 rounded-xl hover:bg-indigo-500 transition-all">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </div>
+
+        <div class="glass-card p-8 rounded-[2rem] text-center border border-white/10" style="opacity: 0; transition: 0.5s;">
+            <h2 id="city-name" class="text-3xl font-bold mb-2">City Name</h2>
+            <p id="description" class="text-indigo-300 uppercase tracking-widest text-sm mb-4">Weather Description</p>
+            <div id="temperature" class="text-7xl font-black mb-8">0°C</div>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-slate-900/50 p-4 rounded-2xl">
+                    <p class="text-[10px] uppercase font-bold text-slate-500">Humidity</p>
+                    <p id="humidity" class="text-xl font-bold">0%</p>
+                </div>
+                <div class="bg-slate-900/50 p-4 rounded-2xl">
+                    <p class="text-[10px] uppercase font-bold text-slate-500">Wind Speed</p>
+                    <p id="wind" class="text-xl font-bold">0 km/h</p>
                 </div>
             </div>
         </div>
-  <script>
-    async function getWeather() {
-        const city = document.getElementById('city-input').value;
-        const apiKey = '8ac5c4d57ba6a4b3d9753e04e9c704f2';
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-        if(!city) {
-            alert("Please enter a city name!");
-            <script>
+    </div>
     async function getWeather() {
       const apiKey = '8ac5c4d57ba6a4b3d9753e04e9c704f2';
         const url = https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric;
