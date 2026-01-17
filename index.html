@@ -3,89 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group 44 - CI/CD Dashboard</title>
+    <title>Group 44 - Tech Blog</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-slate-900 text-white font-sans">
+<body class="bg-gray-50 font-sans">
 
-    <nav class="border-b border-slate-800 p-4 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="bg-blue-600 p-2 rounded-lg">
-                    <i class="fas fa-rocket text-xl"></i>
-                </div>
-                <h1 class="text-xl font-bold tracking-tight">Group 44 DevOps</h1>
-            </div>
-            <div class="flex gap-4">
-                <span class="flex items-center gap-2 text-sm bg-green-500/10 text-green-400 px-3 py-1 rounded-full border border-green-500/20">
-                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    Pipeline Active
-                </span>
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600 flex items-center gap-2">
+                <i class="fas fa-feather-alt"></i> Group 44 Blog
+            </h1>
+            <div class="text-sm text-gray-500 bg-green-100 text-green-700 px-3 py-1 rounded-full border border-green-200">
+                <i class="fas fa-circle text-[8px] animate-pulse"></i> CI/CD Live
             </div>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto p-6 space-y-8">
-        <section class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl p-8 shadow-2xl overflow-hidden relative">
-            <div class="relative z-10">
-                <h2 class="text-4xl font-extrabold mb-2">Automated CI/CD Pipeline</h2>
-                <p class="text-blue-100 text-lg max-w-2xl">This project demonstrates a professional DevOps workflow using GitHub Actions and GitHub Pages. Every commit is validated and deployed automatically.</p>
-            </div>
-            <i class="fas fa-gears absolute right-[-20px] bottom-[-20px] text-[200px] text-white/10 rotate-12"></i>
-        </section>
+    <main class="max-w-5xl mx-auto px-4 py-10">
+        <header class="text-center mb-16">
+            <h2 class="text-4xl font-extrabold text-gray-900 mb-4">Welcome to Our Dev Blog</h2>
+            <p class="text-gray-600 text-lg">Sharing our journey in DevOps and Software Engineering.</p>
+        </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition-all group">
-                <i class="fas fa-code-branch text-blue-500 text-2xl mb-4 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-slate-400 text-sm font-medium uppercase tracking-wider">Source Branch</h3>
-                <p class="text-2xl font-bold mt-1">main</p>
-            </div>
-            <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-green-500 transition-all group">
-                <i class="fas fa-check-circle text-green-500 text-2xl mb-4 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-slate-400 text-sm font-medium uppercase tracking-wider">Build Status</h3>
-                <p class="text-2xl font-bold mt-1 text-green-400">Success</p>
-            </div>
-            <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-purple-500 transition-all group">
-                <i class="fas fa-globe text-purple-500 text-2xl mb-4 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-slate-400 text-sm font-medium uppercase tracking-wider">Deployment</h3>
-                <p class="text-2xl font-bold mt-1">GitHub Pages</p>
-            </div>
+        <div class="grid md:grid-cols-2 gap-8">
+            
+            <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="h-48 bg-blue-500 flex items-center justify-center">
+                    <i class="fas fa-rocket text-white text-6xl opacity-40"></i>
+                </div>
+                <div class="p-6">
+                    <div class="text-blue-600 text-xs font-bold uppercase mb-2">DevOps</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Automating with GitHub Actions</h3>
+                    <p class="text-gray-600 text-sm mb-4">Learn how Group 44 built a seamless CI/CD pipeline to deploy code automatically to GitHub Pages.</p>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-xs">L</div>
+                        <span class="text-xs text-gray-500 font-medium font-semibold">Liyanaarachchi04</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="h-48 bg-indigo-500 flex items-center justify-center">
+                    <i class="fas fa-code text-white text-6xl opacity-40"></i>
+                </div>
+                <div class="p-6">
+                    <div class="text-indigo-600 text-xs font-bold uppercase mb-2">Frontend</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Modern UI with Tailwind CSS</h3>
+                    <p class="text-gray-600 text-sm mb-4">Exploring how utility-first CSS frameworks make web development faster and more efficient.</p>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-xs">N</div>
+                        <span class="text-xs text-gray-500 font-medium">nisha20001216</span>
+                    </div>
+                </div>
+            </article>
+
         </div>
 
-        <section class="bg-slate-800/30 rounded-2xl border border-slate-700 p-6">
-            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
-                <i class="fas fa-users text-blue-500"></i>
-                Team Contributors
-            </h3>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left">
-                    <thead>
-                        <tr class="text-slate-400 border-b border-slate-700">
-                            <th class="pb-4 font-semibold">Username</th>
-                            <th class="pb-4 font-semibold">Role</th>
-                            <th class="pb-4 font-semibold">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-700">
-                        <tr>
-                            <td class="py-4 font-medium">Liyanaarachchi04</td>
-                            <td class="py-4 text-slate-400">DevOps Engineer</td>
-                            <td class="py-4"><span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-md text-xs border border-blue-500/20">Active</span></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 font-medium">nisha20001216</td>
-                            <td class="py-4 text-slate-400">Frontend Developer</td>
-                            <td class="py-4"><span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-md text-xs border border-blue-500/20">Active</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <section class="mt-20 bg-blue-600 rounded-2xl p-8 text-white text-center">
+            <h3 class="text-2xl font-bold mb-2">Want to add a post?</h3>
+            <p class="mb-6 opacity-90">Just edit the <code>index.html</code> file and push the changes!</p>
+            <button onclick="alert('This is a static blog! To add posts, edit the HTML code in your GitHub repository.')" 
+                    class="bg-white text-blue-600 px-6 py-2 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                How to post?
+            </button>
         </section>
     </main>
 
-    <footer class="max-w-7xl mx-auto p-12 text-center text-slate-500 border-t border-slate-800 mt-12">
-        <p>&copy; 2024 Group 44 Assignment. Built with GitHub Actions.</p>
+    <footer class="bg-gray-900 text-white py-12 mt-20">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <p class="text-gray-400 mb-2">&copy; 2024 Group 44 Assignment. Powered by GitHub Actions.</p>
+            <div class="flex justify-center gap-4 text-gray-500 italic">
+                <span>Infrastructure: Liyanaarachchi04</span>
+                <span>Content: nisha20001216</span>
+            </div>
+        </div>
     </footer>
 
 </body>
