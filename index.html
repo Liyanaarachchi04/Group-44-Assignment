@@ -39,13 +39,14 @@
         <div class="px-4 py-1 border border-indigo-500/30 bg-indigo-500/10 rounded-full text-[10px] font-bold text-indigo-400 animate-pulse">SYSTEM ONLINE</div>
     </div>
 
-    <div class="w-full max-w-md flex gap-3 mb-12">
-        <input id="city-input" type="text" placeholder="Search city (e.g. Kandy)..." 
-               class="flex-grow bg-slate-900 border border-slate-800 rounded-2xl px-6 py-4 outline-none focus:border-indigo-500 transition-all text-white">
-        <button onclick="getWeather()" class="bg-indigo-600 hover:bg-indigo-500 px-8 rounded-2xl transition-all shadow-lg">
-            <i class="fas fa-search"></i>
-        </button>
-    </div>
+   <div class="w-full max-w-md flex gap-3 mb-12">
+    <input id="city-input" type="text" placeholder="Search city (e.g. Kandy)..." 
+        class="flex-grow bg-slate-100 text-black border border-slate-300 rounded-2xl px-6 py-4 outline-none focus:border-indigo-500 transition-all">
+    
+    <button onclick="getWeather()" class="bg-indigo-600 hover:bg-indigo-500 px-8 rounded-2xl transition-all shadow-lg text-white">
+        <i class="fas fa-search"></i>
+    </button>
+   </div>
 
     <div id="weather-display" class="hidden w-full max-w-4xl animate-fade">
         <div class="glass-card p-10 md:p-16 shadow-2xl">
